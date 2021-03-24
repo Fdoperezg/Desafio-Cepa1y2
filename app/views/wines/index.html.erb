@@ -20,8 +20,10 @@
             <% end %>        
         </td>
         <td><%= link_to 'Show', wine %></td>
-        <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
-        <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.editor? %>
+          <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
+          <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +31,6 @@
 
 <br>
 
+<% if current_user.editor? %>
 <%= link_to 'New Wine', new_wine_path %>
+<% end %>
