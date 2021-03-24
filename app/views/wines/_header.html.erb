@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light" style="background-color: #4000FF">
+  <%= link_to 'Wine App', root_path, class:"navbar-brand" %>  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"nav-link" %> 
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Edit profile', edit_user_registration_path, class:"nav-link" %> 
+        </li>
+        <li class="nav-item">
+          <% if user_signed_in? %>
+            <%= form_tag(root_path, method: 'get', class: 'd-flex nav-search-placeholder') do %>
+              <%= text_field_tag :q, nil, placeholder: "Search in Tweeet's content", class:'mr-3 nav-search', id:'search' %>
+              <%= submit_tag 'Buscar', class: 'submit-btn-search' %>
+            <% end %>
+          <% end %>
+        </li>    
+      <% else %>
+        <li class="nav-item">
+            <%= link_to 'Sign up', new_user_registration_path, class:"nav-link" %> 
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Log in', new_user_session_path, class:"nav-link" %> 
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
