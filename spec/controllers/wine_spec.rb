@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
 RSpec.describe WinesController, ​ type:​ ​ :controller​ ​ do
     describe ​ 'GET index"' ​ do
         it ​ 'returns a successful response'​ ​ do
